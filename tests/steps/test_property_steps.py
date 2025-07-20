@@ -1,12 +1,54 @@
 from assertpy import assert_that
-from pytest_bdd import given, then
+from pytest_bdd import given, when, then, parsers
 
+from tests.pages.CreatePropertyPage import CreatePropertyPage
 from tests.pages.PropertiesPage import PropertiesPage
 
-@given("the user is in the properties page")
+@given("the user is in the Properies Page")
 def navigate_properties_page(chrome_driver):
     properties_page = PropertiesPage(chrome_driver)
     properties_page.navigate_properties_page()
+
+@then("the user is in the Properies Page")
+def validate_properties_page(chrome_driver):
+    properties_page = PropertiesPage(chrome_driver)
+    properties_page.wait_until_url_is(properties_page.URL)
+    assert_that(properties_page.get_page_title()).is_equal_to('Properties List')
+
+@when("the user clicks on +Create Property")
+def click_create_property(chrome_driver):
+    properties_page = PropertiesPage(chrome_driver)
+    properties_page.click_create_property_btn()
+
+@when(parsers.parse("the user enters '{name}' as Property Name"))
+def enter_property_name(chrome_driver, name):
+    create_properties_page = CreatePropertyPage(chrome_driver)
+    create_properties_page.enter_property_name(name)
+
+@when(parsers.parse("the user enters '{address}' as Address"))
+def enter_address(chrome_driver, address):
+    create_properties_page = CreatePropertyPage(chrome_driver)
+    create_properties_page.enter_property_address(address)
+
+@when(parsers.parse("the user enters '{price}' as Price"))
+def enter_property_price(chrome_driver, price):
+    create_properties_page = CreatePropertyPage(chrome_driver)
+    create_properties_page.enter_property_price(price)
+
+@when(parsers.parse("the user enters '{size}' as Size"))
+def enter_property_size(chrome_driver, size):
+    create_properties_page = CreatePropertyPage(chrome_driver)
+    create_properties_page.enter_property_size(size)
+
+@when(parsers.parse("the user selects '{company}' as Company"))
+def select_company(chrome_driver, company):
+    create_properties_page = CreatePropertyPage(chrome_driver)
+    create_properties_page.select_property_company(company)
+
+@when('the user clicks on Create Property')
+def click_create_property_btn(chrome_driver):
+    create_properties_page = CreatePropertyPage(chrome_driver)
+    create_properties_page.click_create_property_btn()
 
 @then("the following properties are listed:")
 def validate_properties_listed(datatable, chrome_driver):
@@ -14,3 +56,5 @@ def validate_properties_listed(datatable, chrome_driver):
     properties_list = properties_page.get_properties()
     for property in datatable:
         assert_that(properties_list, f"property '{property[0]}' was not listed").contains(property)
+
+

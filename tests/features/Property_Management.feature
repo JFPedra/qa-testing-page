@@ -3,7 +3,7 @@ Feature: Property_Management
   so that I can track all assets associated with companies.
 
   Background:
-    Given the user is in the properties page
+    Given the user is in the Properies Page
 
   Scenario: Listing existing properties
     Then the following properties are listed:
@@ -11,4 +11,14 @@ Feature: Property_Management
       | Downtown Loft        | 456 City Center | $320000.00 | 95 sqm  | Acme Real Estate |
       | Modern Duplex        | 333 Oak Lane    | $370000.00 | 140 sqm | Sunrise Builders |
 
-
+  Scenario: Successfully create a new property linked to a company
+    When the user clicks on +Create Property
+    And the user enters 'Ocean View Villa' as Property Name
+    And the user enters '123 Seaside Ave' as Address
+    And the user enters '1500000' as Price
+    And the user enters '200 sqm' as Size
+    And the user selects 'Sunrise Builders' as Company
+    And the user clicks on Create Property
+    Then the user is in the Properies Page
+    Then the following properties are listed:
+      | Ocean View Villa| 123 Seaside Ave  | $1500000.00 | 200 sqm | Sunrise Builders |
