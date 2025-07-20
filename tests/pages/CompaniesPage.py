@@ -5,12 +5,15 @@ from tests.pages.BasePage import BasePage
 
 class CompaniesPage(BasePage):
 
-    URL = ''
-    CREATE_COMPANY_BTN = (By.LINK_TEXT, '/create-company')
+    URL = 'http://localhost:5000/companies'
+    CREATE_COMPANY_BTN = (By.LINK_TEXT, '+ Create Company')
     COMPANY_ROWS = (By.XPATH, '//tbody/tr')
 
     def navigate_companies_page(self):
         self.navigate_to('http://localhost:5000/companies')
+
+    def click_create_company_btn(self):
+        self.click(self.CREATE_COMPANY_BTN)
 
     def get_companies(self):
         rows = self.get_elements(self.COMPANY_ROWS)
