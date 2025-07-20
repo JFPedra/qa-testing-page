@@ -1,10 +1,9 @@
-from pytest_bdd import scenarios, given, when, then, parsers
-from assertpy import assert_that, soft_assertions
+from pytest_bdd import given, when, then, parsers
+from assertpy import assert_that
 
 from tests.pages.CompaniesPage import CompaniesPage
 from tests.pages.CreateCompanyPage import CreateCompanyPage
 
-scenarios('../features')
 
 @given('the user is in the companies page')
 def navigate_to_companies_page(chrome_driver):

@@ -8,10 +8,31 @@ authors = [
 readme = "README.md"
 requires-python = "^3.12"
 dependencies = [
-    "flask (>=3.1.1,<4.0.0)"
+    "flask (>=3.1.1,<4.0.0)",
+    "pytest (>=8.4.1,<9.0.0)",
+    "selenium (>=4.34.2,<5.0.0)",
+    "webdriver-manager (>=4.0.2,<5.0.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "pytest-html (>=4.1.1,<5.0.0)",
+    "pytest-bdd (>=8.1.0,<9.0.0)",
+    "assertpy (>=1.1,<2.0)"
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+# 1. Tell pytest where to look for tests.
+testpaths = [
+    "tests/steps",
+]
+
+# 2. Tell pytest-bdd where to look for feature files.
+# This prevents it from searching everywhere.
+bdd_features_base_dir = "tests/features"
+
+# 3. Tell pytest to add the project root to the Python path.
+# This is the key to solving the ModuleNotFoundError.
+pythonpath = "."
