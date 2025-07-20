@@ -10,7 +10,7 @@ class CompaniesPage(BasePage):
     COMPANY_ROWS = (By.XPATH, '//tbody/tr')
 
     def navigate_companies_page(self):
-        self.navigate_to('http://localhost:5000/companies')
+        self.navigate_to(self.URL)
 
     def click_create_company_btn(self):
         self.click(self.CREATE_COMPANY_BTN)
