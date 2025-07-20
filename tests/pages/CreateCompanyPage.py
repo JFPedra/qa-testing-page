@@ -9,7 +9,7 @@ class CreateCompanyPage(BasePage):
     COMPANY_TYPE_DROPDOWN = (By.ID, 'type')
     COMPANY_EMAIL_FIELD = (By.ID, 'email')
     CREATE_COMPANY_BTN = (By.CSS_SELECTOR, 'button.btn-success')
-
+    BACK_TO_LIST_BTN = (By.LINK_TEXT, 'Back to List')
 
     def enter_company_name(self, name):
         self.enter_text(self.COMPANY_NAME_FIELD, name)
@@ -22,6 +22,9 @@ class CreateCompanyPage(BasePage):
 
     def click_create_company_btn(self):
         self.click(self.CREATE_COMPANY_BTN)
+
+    def click_back_to_list_btn(self):
+        self.click(self.BACK_TO_LIST_BTN)
 
 
 

@@ -48,3 +48,20 @@ def validate_companies_listed(datatable, chrome_driver):
     for company in datatable:
         assert_that(companies_list, f"company '{company[0]}' was not listed").contains(company)
 
+@then('the following companies are not listed')
+def validate_companies_not_listed(datatable, chrome_driver):
+    companies_page = CompaniesPage(chrome_driver)
+    companies_list = companies_page.get_companies()
+    for company in datatable:
+        assert_that(companies_list, f"company '{company[0]}' was listed").does_not_contain(company)
+
+@when('the user clicks on Back to List button')
+@then('the user clicks on Back to List button')
+def click_back_to_list_btn(chrome_driver):
+    create_company_page = CreateCompanyPage(chrome_driver)
+    create_company_page.click_back_to_list_btn()
+
+@then('the user remains in the Create Company Page')
+def validate_create_company_page(chrome_driver):
+    create_company_page = CreateCompanyPage(chrome_driver)
+    assert_that(create_company_page.get_page_title()).is_equal_to('Create Company')

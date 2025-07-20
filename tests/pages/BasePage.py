@@ -11,6 +11,9 @@ class BasePage():
     def wait_until_url_is(self, url):
         self.wait.until(EC.url_to_be(url))
 
+    def wait_until_locator_is_visible(self, locator):
+        self.wait.until(EC.visibility_of_element_located(locator))
+
     def get_page_title(self):
         return self.driver.title
 
