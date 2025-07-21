@@ -4,12 +4,12 @@ from pytest_bdd import given, when, then, parsers
 from tests.pages.CreatePropertyPage import CreatePropertyPage
 from tests.pages.PropertiesPage import PropertiesPage
 
-@given("the user is in the Properies Page")
+@given("the user is in the Properties Page")
 def navigate_properties_page(chrome_driver):
     properties_page = PropertiesPage(chrome_driver)
     properties_page.navigate_properties_page()
 
-@then("the user is in the Properies Page")
+@then("the user is in the Properties Page")
 def validate_properties_page(chrome_driver):
     properties_page = PropertiesPage(chrome_driver)
     properties_page.wait_until_url_is(properties_page.URL)

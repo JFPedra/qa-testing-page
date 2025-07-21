@@ -3,7 +3,7 @@ Feature: Property_Management
   so that I can track all assets associated with companies.
 
   Background:
-    Given the user is in the Properies Page
+    Given the user is in the Properties Page
 
   Scenario: Listing existing properties
     Then the following properties are listed:
@@ -19,7 +19,7 @@ Feature: Property_Management
     * the user enters '200 sqm' as Size
     * the user selects 'Sunrise Builders' as Company
     * the user clicks on Create Property
-    Then the user is in the Properies Page
+    Then the user is in the Properties Page
     And the following properties are listed:
       | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Sunrise Builders |
 
@@ -43,7 +43,7 @@ Feature: Property_Management
     * the user enters '200 sqm' as Size
     * the user selects 'Sunrise Builders' as Company
     * the user clicks on Create Property
-    Then the user is in the Properies Page
+    Then the user is in the Properties Page
     And alert of negative price is displayed
     And the following properties are not listed:
       | Ocean View Villa | 123 Seaside Ave | $-1500000.00 | 200 sqm | Sunrise Builders |
@@ -62,8 +62,8 @@ Feature: Property_Management
     * the user enters '200 sqm' as Size
     * the user selects 'Sunrise Builders' as Company
     * the user clicks on Create Property
-    Then the user is in the Properies Page
-    * the user clicks on delete the property 'Modern Duplex'
+    Then the user is in the Properties Page
+    * the user clicks on delete the property 'Ocean View Villa'
     * property successfully deleted alert is displayed
     * the following properties are not listed:
       | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Sunrise Builders |

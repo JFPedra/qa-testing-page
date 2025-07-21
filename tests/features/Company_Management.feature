@@ -64,7 +64,7 @@ Feature: Company_Management
     * the user enters '200 sqm' as Size
     * the user selects 'Prestige Properties' as Company
     * the user clicks on Create Property
-    Then the user is in the Properies Page
+    Then the user is in the Properties Page
     And the following properties are listed:
       | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Prestige Properties |
 
