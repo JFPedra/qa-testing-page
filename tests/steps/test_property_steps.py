@@ -57,4 +57,16 @@ def validate_properties_listed(datatable, chrome_driver):
     for property in datatable:
         assert_that(properties_list, f"property '{property[0]}' was not listed").contains(property)
 
+@then("the following properties are not listed")
+def validate_properties_not_listed(datatable, chrome_driver):
+    properties_page = PropertiesPage(chrome_driver)
+    properties_list = properties_page.get_properties()
+    for property in datatable:
+        assert_that(properties_list, f"property '{property[0]}' was listed").does_not_contain(property)
+
+@then("the user remains in the Create Property Page")
+def validate_create_property_page(chrome_driver):
+    create_properties_page = CreatePropertyPage(chrome_driver)
+    assert_that(create_properties_page.get_page_title()).is_equal_to('Create Property')
+
 

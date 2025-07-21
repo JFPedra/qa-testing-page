@@ -21,4 +21,16 @@ Feature: Property_Management
     And the user clicks on Create Property
     Then the user is in the Properies Page
     Then the following properties are listed:
-      | Ocean View Villa| 123 Seaside Ave  | $1500000.00 | 200 sqm | Sunrise Builders |
+      | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Sunrise Builders |
+
+  Scenario: Attempt to create a property with required fields left blank
+    When the user clicks on +Create Property
+    And the user enters ' ' as Property Name
+    And the user enters ' ' as Address
+    And the user enters ' ' as Price
+    And the user enters '200 sqm' as Size
+    And the user clicks on Create Property
+    Then the user remains in the Create Property Page
+    And the user clicks on Back to List button
+    And the following properties are not listed
+      |  |  | 200 sqm |  |

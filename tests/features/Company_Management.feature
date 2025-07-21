@@ -26,6 +26,7 @@ Feature: Company_Management
     And the user enters 'Innovate Real Estate' as Company Name
     And the user selects 'Real Estate' as Company Type
     And the user enters 'no email' as Email
+    And the user clicks on Create Company
     Then the user remains in the Create Company Page
     And the user clicks on Back to List button
     And the following companies are not listed
