@@ -34,7 +34,7 @@ Feature: Company_Management
 
   Scenario: Successfully delete a company
     When the user clicks on delete the company 'Acme Real Estate'
-    Then success delete alert is displayed
+    Then company successfully deleted alert is displayed
     And the following companies are not listed
       | Acme Real Estate | Real Estate | contact@acmereal.com |
 
@@ -46,6 +46,6 @@ Feature: Company_Management
     And the user clicks on Create Company
     Then the user is in the companies page
     And the user clicks on delete the company 'Innovate Real Estate'
-    And success delete alert is displayed
+    And company successfully deleted alert is displayed
     And the following companies are not listed
       | Innovate Real Estate | Real Estate | contact@innovatere.com |

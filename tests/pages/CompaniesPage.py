@@ -26,8 +26,9 @@ class CompaniesPage(BasePage):
         return table
 
     def delete_company(self, company_name):
-        company_index =str(self.find_company_index(company_name) + 1)
-        self.click((By.XPATH, '//tbody/tr[i]//button'.replace('i', company_index)))
+        index = self.find_company_index(company_name)
+        delete_button_locator = (By.XPATH, f"//tbody/tr[{index + 1}]//button")
+        self.click(delete_button_locator)
         Alert(self.driver).accept()
 
     def find_company_index(self, company_name):

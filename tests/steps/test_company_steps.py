@@ -67,8 +67,8 @@ def click_back_to_list_btn(chrome_driver):
     create_company_page = CreateCompanyPage(chrome_driver)
     create_company_page.click_back_to_list_btn()
 
-@then('success delete alert is displayed')
-def validate_delete_alert_displayed(chrome_driver):
+@then('company successfully deleted alert is displayed')
+def validate_delete_company_alert_displayed(chrome_driver):
     companies_page = CompaniesPage(chrome_driver)
     assert_that(companies_page.get_alert_messages()).contains('Company deleted.')
 
