@@ -13,20 +13,20 @@ Feature: Company_Management
 
   Scenario: Successfully create a new company with all fields
     When the user clicks on + Create Company
-    And the user enters 'Innovate Real Estate' as Company Name
-    And the user selects 'Real Estate' as Company Type
-    And the user enters 'contact@innovatere.com' as Email
-    And the user clicks on Create Company
+    * the user enters 'Innovate Real Estate' as Company Name
+    * the user selects 'Real Estate' as Company Type
+    * the user enters 'contact@innovatere.com' as Email
+    * the user clicks on Create Company
     Then the user is in the companies page
     And the following companies are listed:
       | Innovate Real Estate | Real Estate | contact@innovatere.com |
 
   Scenario: Attempt to create a company with an invalid email
     When the user clicks on + Create Company
-    And the user enters 'Innovate Real Estate' as Company Name
-    And the user selects 'Real Estate' as Company Type
-    And the user enters 'no email' as Email
-    And the user clicks on Create Company
+    * the user enters 'Innovate Real Estate' as Company Name
+    * the user selects 'Real Estate' as Company Type
+    * the user enters 'no email' as Email
+    * the user clicks on Create Company
     Then the user remains in the Create Company Page
     And the user clicks on Back to List button
     And the following companies are not listed
@@ -40,10 +40,10 @@ Feature: Company_Management
 
   Scenario: Successfully create and delete the same company
     When the user clicks on + Create Company
-    And the user enters 'Innovate Real Estate' as Company Name
-    And the user selects 'Real Estate' as Company Type
-    And the user enters 'contact@innovatere.com' as Email
-    And the user clicks on Create Company
+    * the user enters 'Innovate Real Estate' as Company Name
+    * the user selects 'Real Estate' as Company Type
+    * the user enters 'contact@innovatere.com' as Email
+    * the user clicks on Create Company
     Then the user is in the companies page
     And the user clicks on delete the company 'Innovate Real Estate'
     And company successfully deleted alert is displayed

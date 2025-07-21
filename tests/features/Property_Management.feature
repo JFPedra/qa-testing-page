@@ -13,23 +13,23 @@ Feature: Property_Management
 
   Scenario: Successfully create a new property linked to a company
     When the user clicks on +Create Property
-    And the user enters 'Ocean View Villa' as Property Name
-    And the user enters '123 Seaside Ave' as Address
-    And the user enters '1500000' as Price
-    And the user enters '200 sqm' as Size
-    And the user selects 'Sunrise Builders' as Company
-    And the user clicks on Create Property
+    * the user enters 'Ocean View Villa' as Property Name
+    * the user enters '123 Seaside Ave' as Address
+    * the user enters '1500000' as Price
+    * the user enters '200 sqm' as Size
+    * the user selects 'Sunrise Builders' as Company
+    * the user clicks on Create Property
     Then the user is in the Properies Page
-    Then the following properties are listed:
+    And the following properties are listed:
       | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Sunrise Builders |
 
   Scenario: Attempt to create a property with required fields left blank
     When the user clicks on +Create Property
-    And the user enters ' ' as Property Name
-    And the user enters ' ' as Address
-    And the user enters ' ' as Price
-    And the user enters '200 sqm' as Size
-    And the user clicks on Create Property
+    * the user enters ' ' as Property Name
+    * the user enters ' ' as Address
+    * the user enters ' ' as Price
+    * the user enters '200 sqm' as Size
+    * the user clicks on Create Property
     Then the user remains in the Create Property Page
     And the user clicks on Back to List button
     And the following properties are not listed
