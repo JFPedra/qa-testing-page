@@ -48,3 +48,5 @@ This will trigger the test suite and generate an HTML report named `report.html`
 
 ## Bug Report
 Details about the defects can be found [here](https://github.com/JFPedra/qa-testing-page/blob/main/tests/defects-report.md)
+
+![Report](report.jpg )
