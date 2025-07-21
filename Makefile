@@ -7,4 +7,4 @@ run:
 	poetry run flask --app app.routes run --debug
 
 test:
-	@echo "Define your test command here (e.g., pytest, cypress, etc.)"
+	poetry run pytest  --html=report.html --self-contained-html
