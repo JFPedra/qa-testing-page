@@ -31,3 +31,9 @@ Feature: Company_Management
     And the user clicks on Back to List button
     And the following companies are not listed
       | Innovate Real Estate | Real Estate | no email |
+
+  Scenario: Successfully delete a company
+    When the user clicks on delete the company 'Acme Real Estate'
+    Then success delete alert is displayed
+    And the following companies are not listed
+    | Acme Real Estate     | Real Estate  | contact@acmereal.com   |

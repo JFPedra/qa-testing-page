@@ -36,6 +36,11 @@ def enter_email(email, chrome_driver):
     create_company_page = CreateCompanyPage(chrome_driver)
     create_company_page.enter_company_email(email)
 
+@when(parsers.parse("the user clicks on delete the company '{company_name}'"))
+def delete_company_name(company_name, chrome_driver):
+    companies_page = CompaniesPage(chrome_driver)
+    companies_page.delete_company(company_name)
+
 @when("the user clicks on Create Company")
 def create_company(chrome_driver):
     create_company_page = CreateCompanyPage(chrome_driver)
@@ -60,6 +65,11 @@ def validate_companies_not_listed(datatable, chrome_driver):
 def click_back_to_list_btn(chrome_driver):
     create_company_page = CreateCompanyPage(chrome_driver)
     create_company_page.click_back_to_list_btn()
+
+@then('success delete alert is displayed')
+def validate_delete_alert_displayed(chrome_driver):
+    companies_page = CompaniesPage(chrome_driver)
+    assert_that(companies_page.get_alert_messages()).contains('Company deleted.')
 
 @then('the user remains in the Create Company Page')
 def validate_create_company_page(chrome_driver):
