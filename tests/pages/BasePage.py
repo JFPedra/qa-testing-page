@@ -24,9 +24,7 @@ class BasePage():
         self.driver.get(url)
 
     def click(self, locator):
-        element = self.get_element(locator)
-        self.wait.until(EC.element_to_be_clickable(element))
-        element.click()
+        self.wait.until(EC.element_to_be_clickable(locator)).click()
 
     def get_text(self, locator):
         return self.get_element(locator).text
