@@ -36,6 +36,7 @@ def enter_email(email, chrome_driver):
     create_company_page = CreateCompanyPage(chrome_driver)
     create_company_page.enter_company_email(email)
 
+@then(parsers.parse("the user clicks on delete the company '{company_name}'"))
 @when(parsers.parse("the user clicks on delete the company '{company_name}'"))
 def delete_company_name(company_name, chrome_driver):
     companies_page = CompaniesPage(chrome_driver)

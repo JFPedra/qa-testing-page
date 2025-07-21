@@ -36,4 +36,16 @@ Feature: Company_Management
     When the user clicks on delete the company 'Acme Real Estate'
     Then success delete alert is displayed
     And the following companies are not listed
-    | Acme Real Estate     | Real Estate  | contact@acmereal.com   |
+      | Acme Real Estate | Real Estate | contact@acmereal.com |
+
+  Scenario: Successfully create and delete the same company
+    When the user clicks on + Create Company
+    And the user enters 'Innovate Real Estate' as Company Name
+    And the user selects 'Real Estate' as Company Type
+    And the user enters 'contact@innovatere.com' as Email
+    And the user clicks on Create Company
+    Then the user is in the companies page
+    And the user clicks on delete the company 'Innovate Real Estate'
+    And success delete alert is displayed
+    And the following companies are not listed
+      | Innovate Real Estate | Real Estate | contact@innovatere.com |
