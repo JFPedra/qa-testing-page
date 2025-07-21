@@ -51,6 +51,7 @@ def click_create_property_btn(chrome_driver):
     create_properties_page.click_create_property_btn()
 
 @when(parsers.parse("the user clicks on delete the property '{property_name}'"))
+@then(parsers.parse("the user clicks on delete the property '{property_name}'"))
 def delete_property(property_name, chrome_driver):
     properties_page = PropertiesPage(chrome_driver)
     properties_page.delete_property(property_name)

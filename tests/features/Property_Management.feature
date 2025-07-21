@@ -40,3 +40,17 @@ Feature: Property_Management
     Then property successfully deleted alert is displayed
     And the following properties are not listed
       | Modern Duplex | 333 Oak Lane | $370000.00 | 140 sqm | Sunrise Builders |
+
+  Scenario: Successfully create and delete the same property
+    When the user clicks on +Create Property
+    * the user enters 'Ocean View Villa' as Property Name
+    * the user enters '123 Seaside Ave' as Address
+    * the user enters '1500000' as Price
+    * the user enters '200 sqm' as Size
+    * the user selects 'Sunrise Builders' as Company
+    * the user clicks on Create Property
+    Then the user is in the Properies Page
+    * the user clicks on delete the property 'Modern Duplex'
+    * property successfully deleted alert is displayed
+    * the following properties are not listed
+      | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Sunrise Builders |
