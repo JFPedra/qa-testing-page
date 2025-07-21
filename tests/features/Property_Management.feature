@@ -32,13 +32,13 @@ Feature: Property_Management
     * the user clicks on Create Property
     Then the user remains in the Create Property Page
     And the user clicks on Back to List button
-    And the following properties are not listed
+    And the following properties are not listed:
       |  |  | 200 sqm |  |
 
   Scenario: Successfully delete a property
     When the user clicks on delete the property 'Modern Duplex'
     Then property successfully deleted alert is displayed
-    And the following properties are not listed
+    And the following properties are not listed:
       | Modern Duplex | 333 Oak Lane | $370000.00 | 140 sqm | Sunrise Builders |
 
   Scenario: Successfully create and delete the same property
@@ -52,5 +52,5 @@ Feature: Property_Management
     Then the user is in the Properies Page
     * the user clicks on delete the property 'Modern Duplex'
     * property successfully deleted alert is displayed
-    * the following properties are not listed
+    * the following properties are not listed:
       | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Sunrise Builders |

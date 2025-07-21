@@ -1,4 +1,4 @@
-from assertpy import assert_that
+from assertpy import assert_that, soft_assertions
 from pytest_bdd import given, when, then, parsers
 
 from tests.pages.CreatePropertyPage import CreatePropertyPage
@@ -61,15 +61,17 @@ def delete_property(property_name, chrome_driver):
 def validate_properties_listed(datatable, chrome_driver):
     properties_page = PropertiesPage(chrome_driver)
     properties_list = properties_page.get_properties()
-    for property in datatable:
-        assert_that(properties_list, f"property '{property[0]}' was not listed").contains(property)
+    with soft_assertions():
+        for property in datatable:
+            assert_that(properties_list, f"property '{property[0]}' was not listed").contains(property)
 
-@then("the following properties are not listed")
+@then("the following properties are not listed:")
 def validate_properties_not_listed(datatable, chrome_driver):
     properties_page = PropertiesPage(chrome_driver)
     properties_list = properties_page.get_properties()
-    for property in datatable:
-        assert_that(properties_list, f"property '{property[0]}' was listed").does_not_contain(property)
+    with soft_assertions():
+        for property in datatable:
+            assert_that(properties_list, f"property '{property[0]}' was listed").does_not_contain(property)
 
 @then("the user remains in the Create Property Page")
 def validate_create_property_page(chrome_driver):

@@ -1,5 +1,5 @@
 from pytest_bdd import given, when, then, parsers
-from assertpy import assert_that
+from assertpy import assert_that, soft_assertions
 
 from tests.pages.CompaniesPage import CompaniesPage
 from tests.pages.CreateCompanyPage import CreateCompanyPage
@@ -51,15 +51,17 @@ def create_company(chrome_driver):
 def validate_companies_listed(datatable, chrome_driver):
     companies_page = CompaniesPage(chrome_driver)
     companies_list = companies_page.get_companies()
-    for company in datatable:
-        assert_that(companies_list, f"company '{company[0]}' was not listed").contains(company)
+    with soft_assertions():
+        for company in datatable:
+            assert_that(companies_list, f"company '{company[0]}' was not listed").contains(company)
 
 @then('the following companies are not listed')
 def validate_companies_not_listed(datatable, chrome_driver):
     companies_page = CompaniesPage(chrome_driver)
     companies_list = companies_page.get_companies()
-    for company in datatable:
-        assert_that(companies_list, f"company '{company[0]}' was listed").does_not_contain(company)
+    with soft_assertions():
+        for company in datatable:
+            assert_that(companies_list, f"company '{company[0]}' was listed").does_not_contain(company)
 
 @when('the user clicks on Back to List button')
 @then('the user clicks on Back to List button')
