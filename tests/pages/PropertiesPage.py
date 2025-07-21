@@ -9,6 +9,7 @@ class PropertiesPage(BasePage):
     CREATE_COMPANY_BTN = (By.LINK_TEXT, '+ Create Property')
     PROPERTY_ROWS = (By.XPATH, '//tbody/tr')
     SUCCESS_DELETE_ALERT = (By.CSS_SELECTOR, "div.alert-success.alert-dismissible")
+    ERROR_ALERT = (By.CSS_SELECTOR, "div.alert.alert-error")
 
     def navigate_properties_page(self):
         self.navigate_to(self.URL)
@@ -36,5 +37,9 @@ class PropertiesPage(BasePage):
                 return i
         raise ValueError(f"Company '{property_name}' not found")
 
-    def get_alert_messages(self):
+    def get_success_alert_messages(self):
         return self.get_text(self.SUCCESS_DELETE_ALERT)
+
+    def get_error_alert_messages(self):
+        return self.get_text(self.ERROR_ALERT)
+

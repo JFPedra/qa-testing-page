@@ -78,7 +78,12 @@ def validate_create_property_page(chrome_driver):
     create_properties_page = CreatePropertyPage(chrome_driver)
     assert_that(create_properties_page.get_page_title()).is_equal_to('Create Property')
 
+@then("alert of negative price is displayed")
+def validate_negative_price_alert(chrome_driver):
+    properties_page = PropertiesPage(chrome_driver)
+    assert_that(properties_page.get_error_alert_messages()).is_equal_to('Price must be a positive number.')
+
 @then("property successfully deleted alert is displayed")
 def validate_delete_property_alert(chrome_driver):
     properties_page = PropertiesPage(chrome_driver)
-    assert_that(properties_page.get_alert_messages()).is_equal_to('Property deleted.')
+    assert_that(properties_page.get_success_alert_messages()).is_equal_to('Property deleted.')
