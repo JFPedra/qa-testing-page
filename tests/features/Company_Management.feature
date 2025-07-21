@@ -49,3 +49,21 @@ Feature: Company_Management
     And company successfully deleted alert is displayed
     And the following companies are not listed
       | Innovate Real Estate | Real Estate | contact@innovatere.com |
+
+  Scenario: Successfully create a company and its property
+    When the user clicks on + Create Company
+    * the user enters 'Prestige Properties' as Company Name
+    * the user selects 'Broker' as Company Type
+    * the user enters 'info@prestigep.com' as Email
+    * the user clicks on Create Company
+    * the user clicks on Properties
+    * the user clicks on +Create Property
+    * the user enters 'Ocean View Villa' as Property Name
+    * the user enters '123 Seaside Ave' as Address
+    * the user enters '1500000' as Price
+    * the user enters '200 sqm' as Size
+    * the user selects 'Prestige Properties' as Company
+    * the user clicks on Create Property
+    Then the user is in the Properies Page
+    And the following properties are listed:
+      | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Prestige Properties |
