@@ -1,4 +1,4 @@
-# Defect Reports
+# Defect Report
 
 ---
 
