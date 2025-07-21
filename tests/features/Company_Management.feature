@@ -67,3 +67,14 @@ Feature: Company_Management
     Then the user is in the Properies Page
     And the following properties are listed:
       | Ocean View Villa | 123 Seaside Ave | $1500000.00 | 200 sqm | Prestige Properties |
+
+  Scenario: Validate all properties are deleted when the company is deleted
+    When the user clicks on delete the company 'Sunrise Builders'
+    And the user clicks on Properties
+    Then the following properties are not listed:
+      | Mountain Cabin | 111 Pine Hill | $180000.00 | 80 sqm  | Sunrise Builders |
+      | Lakeside Villa | 222 Lake Road | $450000.00 | 200 sqm | Sunrise Builders |
+      | Modern Duplex  | 333 Oak Lane  | $370000.00 | 140 sqm | Sunrise Builders |
+
+
+
