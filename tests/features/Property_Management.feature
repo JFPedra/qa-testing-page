@@ -34,3 +34,9 @@ Feature: Property_Management
     And the user clicks on Back to List button
     And the following properties are not listed
       |  |  | 200 sqm |  |
+
+  Scenario: Successfully delete a property
+    When the user clicks on delete the property 'Modern Duplex'
+    Then property successfully deleted alert is displayed
+    And the following properties are not listed
+      | Modern Duplex | 333 Oak Lane | $370000.00 | 140 sqm | Sunrise Builders |

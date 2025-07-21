@@ -50,6 +50,12 @@ def click_create_property_btn(chrome_driver):
     create_properties_page = CreatePropertyPage(chrome_driver)
     create_properties_page.click_create_property_btn()
 
+@when(parsers.parse("the user clicks on delete the property '{property_name}'"))
+def delete_property(property_name, chrome_driver):
+    properties_page = PropertiesPage(chrome_driver)
+    properties_page.delete_property(property_name)
+
+
 @then("the following properties are listed:")
 def validate_properties_listed(datatable, chrome_driver):
     properties_page = PropertiesPage(chrome_driver)
@@ -69,4 +75,7 @@ def validate_create_property_page(chrome_driver):
     create_properties_page = CreatePropertyPage(chrome_driver)
     assert_that(create_properties_page.get_page_title()).is_equal_to('Create Property')
 
-
+@then("property successfully deleted alert is displayed")
+def validate_delete_property_alert(chrome_driver):
+    properties_page = PropertiesPage(chrome_driver)
+    assert_that(properties_page.get_alert_messages()).is_equal_to('Property deleted.')
